@@ -20,7 +20,7 @@ const sizeStyle = {
   lg: " py-4 px-6"
 };
 
-const defaultStyle = "rounded-md ml-2";
+const defaultStyle = "rounded-md mr-2";
 
 export const Button = (props: ButtonProps) => {
   const { variant, size, text, startIcon, endIcon, onClick } = props;

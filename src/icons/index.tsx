@@ -1,5 +1,6 @@
 export interface InconProps{
     size:"sm"|"md"|"lg"
+    onClick?:()=>void
 }
 
  export const iconSizeVariants={
