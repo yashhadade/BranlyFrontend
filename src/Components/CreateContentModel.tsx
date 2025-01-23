@@ -1,5 +1,6 @@
 import { CrossIcon } from "../icons/CrossIcon";
 import { Button } from "./Button";
+import { Input } from "./Input";
 
 // CreateContentModel.js
 export const CreateContentModel = ({ open, onClosed }) => {
@@ -14,8 +15,8 @@ export const CreateContentModel = ({ open, onClosed }) => {
               <div className=" flex justify-end">
                 <CrossIcon size="md" onClick={onClosed}/>
               </div>
-              <Input placeholder={"Title"}/>
-              <Input placeholder={"Link"}/>
+              <Input placeholder={"Title"} type={"text"}/>
+              <Input placeholder={"Link"} type={"text"}/>
               <div className=" flex justify-center">
               <Button variant={"primary"} text={"Submit"} size={"md"}/>
               </div>
@@ -26,12 +27,4 @@ export const CreateContentModel = ({ open, onClosed }) => {
     );
   };
   
-  interface InputInterface{
-    placeholder:string,
-    onChange:()=>void,
-  }
-  function Input(props:InputInterface){
-    return<div>
-        <input placeholder={props.placeholder}type={"text"} className=" px-4 py-2 border rounded-md m-2" onChange={props.onChange}></input>
-    </div>
-  }
+  
