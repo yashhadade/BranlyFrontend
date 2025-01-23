@@ -10,7 +10,7 @@ export const CreateContentModel = ({ open, onClosed }) => {
             className="fixed w-screen h-screen bg-slate-400  top-0 left-0 opacity-80 flex justify-center items-center"
             onClick={onClosed} 
           >
-            <div className="bg-white p-6 rounded-lg shadow-md w-1/3 opacity-100" onClick={(e) => e.stopPropagation()}>
+            <div className="bg-white p-6 rounded-lg shadow-md w-1/3 z-10" onClick={(e) => e.stopPropagation()}>
               <div className=" flex justify-end">
                 <CrossIcon size="md" onClick={onClosed}/>
               </div>

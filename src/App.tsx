@@ -21,7 +21,7 @@ function App() {
   return (
     <div >
         <Sidebar/>
-      <div className=' p-4 ml-48 h-screen bg-gray-200'>
+      <div className=' p-4 ml-64 h-screen bg-gray-200'>
       {/* Modal with open state and close handler */}
       <CreateContentModel open={modalOpen} onClosed={handleModalClose} />
       
