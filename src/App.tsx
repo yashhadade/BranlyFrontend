@@ -11,7 +11,7 @@ function App() {
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/" element={<SignIn />} />
           {/* Optionally, you can add a route for Dashbord if needed */}
-          {/* <Route path="/dashboard" element={<Dashbord />} /> */}
+          <Route path="/dashboard" element={<Dashbord />} />
         </Routes>
       </BrowserRouter>
     </div>
