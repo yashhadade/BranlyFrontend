@@ -1,7 +1,7 @@
-import { data } from "react-router-dom"
+
 import { server } from "../server/Server"
 
-const getSignUp=(data)=>{
+const getSignUp=(data:any)=>{
     return server.post('/signUp',data)
     .then(res=>{
         return res.data;
@@ -11,7 +11,7 @@ const getSignUp=(data)=>{
     })
 }
 
-const getSignIn=(data)=>{
+const getSignIn=(data:any)=>{
     return server.post('/signIn',data)
     .then(res=>{
         return res.data;

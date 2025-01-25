@@ -20,7 +20,8 @@ export const SignIn = () => {
     const userInformatonForLogin=async(value)=>{
         try {
             const res = await userServise.getSignIn(value)
-            if(res && res.sucess){
+           
+            if(res && res.success){
                 enqueueSnackbar("Login SucessFully",{
                     variant:"success",
                     anchorOrigin:{horizontal:"right",vertical:"top"},
@@ -35,7 +36,7 @@ export const SignIn = () => {
                     autoHideDuration: 5000,
                   });
             }
-        } catch (error) {
+        } catch (error:any) {
             enqueueSnackbar(error.message || "Error", {
                 variant: "error",
                 anchorOrigin: { horizontal: "right", vertical: "top" },
@@ -50,7 +51,7 @@ export const SignIn = () => {
         validationSchema: userSignInSingUp,
         onSubmit: async (values) => {
             setLoading(true)
-            userInformatonForLogin(values);
+            await userInformatonForLogin(values);
             setLoading(false)
             console.log(values);
         },

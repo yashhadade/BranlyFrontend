@@ -34,7 +34,7 @@ export const SignUp = () => {
                     autoHideDuration: 5000,
                   });
             }
-        } catch (error) {
+        } catch (error:any) {
             enqueueSnackbar(error.message || "Error", {
                 variant: "error",
                 anchorOrigin: { horizontal: "right", vertical: "top" },
