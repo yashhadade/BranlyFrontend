@@ -27,6 +27,8 @@ export const SignIn = () => {
                     anchorOrigin:{horizontal:"right",vertical:"top"},
                     autoHideDuration:1000,
             })
+            const token=res.token;
+            sessionStorage.setItem('token',token);
             navigate("/dashboard")
             }else{
                 const errorMessage=res.message||res.data||"An unknown error occurred"
