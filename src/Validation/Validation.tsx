@@ -13,6 +13,6 @@ export const  content=Yup.object({
     .required("Please enter Title"),
     link:Yup.string()
     .required("Please enter link"),
-    type:Yup.string()
-    .required("Please Select Type")
+    // type:Yup.string()
+    // .required("Please Select Type")
 })

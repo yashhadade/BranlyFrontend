@@ -10,7 +10,7 @@ import contetnServise from "../Servises/Content";
 const initialValues = {
   link: "",
   title: "",
-  type:""
+  // type:""
 }
 // CreateContentModel.js
 export const CreateContentModel = ({ open, onClosed }) => {
@@ -73,14 +73,14 @@ export const CreateContentModel = ({ open, onClosed }) => {
               {errors.title && touched.title && <div className="text-left text-red-600">{errors.title}</div>}
               <Input placeholder={"Link"} value={values.link} type={"text"} onChange={handleChange} onBlur={handleBlur} name={"link"} />
               {errors.link && touched.link && <div className="text-left text-red-600">{errors.link}</div>}
-              <div className=" mt-1 ">
+              {/* <div className=" mt-1 ">
               <select name="type" onChange={handleChange} onBlur={handleBlur} className=" border p-4 rounded">
                 
               <option value="">Please Select Type</option>
                 <option value="youtube">Youtube</option>
                 <option value="twitter">Twitter</option>
               </select>
-              </div>
+              </div> */}
             </div>
             <div className=" flex justify-center mt-1">
               <Button variant={"primary"} text={"Submit"} size={"md"} onClick={handleSubmit} />
