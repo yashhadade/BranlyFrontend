@@ -9,8 +9,18 @@ const getContentInfo=(data:any)=>{
         return err.response.data
     })
 }
+const getAllContent=()=>{
+    return server.get("/getContent")
+    .then(res=>{
+        return res.data
+    })
+    .catch(err=>{
+        return err.response.data;
+    })
+}
 
 const contetnServise={
-    getContentInfo
+    getContentInfo,
+    getAllContent
 }
 export default contetnServise

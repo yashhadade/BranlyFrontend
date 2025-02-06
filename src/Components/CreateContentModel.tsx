@@ -10,11 +10,18 @@ import contetnServise from "../Servises/Content";
 const initialValues = {
   link: "",
   title: "",
+  notes:"",
   // type:""
+}
+enum ContentType{
+  YouTube="youtube",
+  X="twitter",
 }
 // CreateContentModel.js
 export const CreateContentModel = ({ open, onClosed }) => {
   const {enqueueSnackbar}=useSnackbar();
+  const [type,setType]=useState(ContentType.YouTube);
+// console.log(type)
   const [loading, setLoading] = useState(false);
   const constentInfo=async(value)=>{
       try {
@@ -47,12 +54,17 @@ export const CreateContentModel = ({ open, onClosed }) => {
     initialValues,
     validationSchema: content,
     onSubmit: async (values) => {
+      
       setLoading(true)
-      constentInfo(values)
+      const updatedValues = {
+        ...values,  // Spread the original values
+        type  // Add your new value here
+      };
+      constentInfo(updatedValues)
       // setLoading(true)
       // await userInformatonForLogin(values);
       // setLoading(false)
-      console.log(values);
+      console.log(updatedValues);
       resetForm()
     },
   });
@@ -60,19 +72,28 @@ export const CreateContentModel = ({ open, onClosed }) => {
   return (
     <>
       {open && (
+        <div>
         <div
           className="fixed w-screen h-screen bg-slate-400  top-0 left-0 opacity-80 flex justify-center items-center"
           onClick={onClosed}
         >
-          <div className="bg-white p-6 rounded-lg shadow-md w-1/3 z-10" onClick={(e) => e.stopPropagation()}>
+          
+        </div>
+        <div
+          className="fixed w-screen h-screen top-0 left-0  flex justify-center items-center"
+          onClick={onClosed}
+        >
+        <div className="bg-white p-6 rounded-lg shadow-md w-1/3 z-10" onClick={(e) => e.stopPropagation()}>
             <div className=" flex justify-end">
               <CrossIcon size="md" onClick={onClosed} />
             </div>
-            <div className=" flex flex-col justify-center">
+            <div className=" flex flex-col justify-center" style={{alignItems:"center"}}>
               <Input placeholder={"Title"} value={values.title} type={"text"} onChange={handleChange} onBlur={handleBlur} name={"title"} />
               {errors.title && touched.title && <div className="text-left text-red-600">{errors.title}</div>}
               <Input placeholder={"Link"} value={values.link} type={"text"} onChange={handleChange} onBlur={handleBlur} name={"link"} />
               {errors.link && touched.link && <div className="text-left text-red-600">{errors.link}</div>}
+              <textarea placeholder={"Notes"} value={values.notes}  onChange={handleChange} onBlur={handleBlur} name={"notes"} className=" border p-1 rounded-sm"/>
+              {errors.notes && touched.notes && <div className="text-left text-red-600">{errors.notes}</div>}
               {/* <div className=" mt-1 ">
               <select name="type" onChange={handleChange} onBlur={handleBlur} className=" border p-4 rounded">
                 
@@ -81,10 +102,18 @@ export const CreateContentModel = ({ open, onClosed }) => {
                 <option value="twitter">Twitter</option>
               </select>
               </div> */}
+              <div >
+              <h1>Type</h1>
+              </div>
+              <div className=" flex mb-2 gap-2">
+                <Button text="YouTube" size={"md"} variant={type===ContentType.YouTube?"primary":"secondary"} onClick={()=> setType(ContentType.YouTube)}></Button>
+                <Button text="X" size={"md"} variant={type===ContentType.X?"primary":"secondary"} onClick={()=> setType(ContentType.X)} ></Button>
+              </div>
             </div>
             <div className=" flex justify-center mt-1">
               <Button variant={"primary"} text={"Submit"} size={"md"} onClick={handleSubmit} />
             </div>
+          </div>
           </div>
         </div>
       )}

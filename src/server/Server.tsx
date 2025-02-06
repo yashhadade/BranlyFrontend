@@ -5,5 +5,6 @@ export const server=axios.create({
     responseType:"json",
     headers:{
         "token":sessionStorage.getItem('token')
-    }
+    },
+
 })

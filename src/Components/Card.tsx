@@ -4,9 +4,10 @@ export interface CardInterface {
     title: string;
     link: string;
     type: "twitter" | "youtube";
+    notes: string;
 }
 
-export const Card = ({ title, link, type }: CardInterface) => {
+export const Card = ({ title, link, type, notes }: CardInterface) => {
     return (<div>
         <div className=" p-4 bg-white rounded-md  border-gray-200 max-w-72 border min-h-80  object-contain">
             <div className=" flex justify-between">
@@ -25,7 +26,7 @@ export const Card = ({ title, link, type }: CardInterface) => {
                 {type === "youtube" && (
                     <iframe
                         className="w-[100%]"
-                        src={link.replace("watch","embed").replace("?v=","/")}
+                        src={link.replace("watch", "embed").replace("?v=", "/")}
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerPolicy="strict-origin-when-cross-origin"
@@ -35,8 +36,14 @@ export const Card = ({ title, link, type }: CardInterface) => {
 
 
                 {type === "twitter" && <blockquote className="twitter-tweet">
-                    <a href={link.replace("x.com","twitter.com")}></a>
+                    <a href={link.replace("x.com", "twitter.com")}></a>
                 </blockquote>}
+                {notes && (
+                    <div>
+                        <h2>Notes</h2>
+                        <p>{notes}</p>
+                    </div>
+                )}
             </div>
         </div>
     </div>)
